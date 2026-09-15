@@ -1,0 +1,25 @@
+#Archivos Binarios
+*.exe
+*.class
+#Archivos temporales de editores
+*.log
+*.tmp
+*.swp
+#Editores de Compilacion
+/build/
+/target/
+#Imagenes
+*.jpg
+*.gif
+*.bmp
+*.tiff
+*.svg
+*.webp
+#Audio
+*.mp3
+*.wav
+*.ogg
+*.flac
+*.m4a
+*.aac
+*.wma
