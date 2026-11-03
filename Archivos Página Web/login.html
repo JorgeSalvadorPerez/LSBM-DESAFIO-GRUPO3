@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acceso - Feria La Salle</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="LaSalleCSS.CSS">
+</head>
+<body class="bg-light">
+
+  <nav class="navbar bg-azul-primario py-3 border-bottom border-warning border-3">
+    <div class="container">
+      <a class="navbar-brand text-white fw-bold d-flex align-items-center" href="LaSalle.HTML">
+        <i class="bi bi-arrow-left me-2 text-amarillo"></i>Volver a la Página Principal
+      </a>
+      <span class="text-amarillo fw-bold">Feria La Salle</span>
+    </div>
+  </nav>
+
+  <main class="container py-5" style="max-width: 650px;">
+    
+    <div class="card card-auth mb-4">
+      <div class="card-auth-header">
+        <h4 class="mb-1 fw-bold text-amarillo"><i class="bi bi-box-arrow-in-right me-2"></i>Iniciar Sesión</h4>
+        <small class="text-light">Acceso para usuarios, invitados y empresas registradas</small>
+      </div>
+      <div class="card-body p-4 p-md-5">
+        <form id="form-login" onsubmit="event.preventDefault()">
+          <div class="mb-3">
+            <label class="form-label fw-bold text-secondary">Correo Electrónico</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="bi bi-envelope"></i></span>
+              <input type="email" class="form-control" id="login-correo" placeholder="ejemplo@correo.com">
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="form-label fw-bold text-secondary">Contraseña</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="bi bi-lock"></i></span>
+              <input type="password" class="form-control" id="login-password" placeholder="Tu contraseña">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-amarillo w-100 py-2 fs-5">
+            <i class="bi bi-check-circle me-1"></i>Acceder
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="card card-auth" id="bloque-registro">
+      <div class="card-body p-4 p-md-5 text-center">
+        <div class="mb-3 text-secondary">
+          <i class="bi bi-person-plus fs-1 text-primary"></i>
+        </div>
+        <h4 class="fw-bold text-dark mb-2">¿Aún no tienes cuenta?</h4>
+        <p class="text-muted mb-4">
+          Selecciona tu perfil para registrarte y participar activamente en la feria:
+        </p>
+
+        <div class="row g-3">
+          <div class="col-12 col-md-6">
+            <div class="p-3 border rounded-3 h-100 d-flex flex-column justify-content-between bg-light">
+              <div>
+                <i class="bi bi-person-badge fs-2 text-primary d-block mb-2"></i>
+                <h5 class="fw-bold mb-1">Usuario / Invitado</h5>
+                <p class="small text-muted mb-3">Para asistentes, estudiantes y visitantes.</p>
+              </div>
+              <a href="registro.html?tipo=usuario" class="btn btn-outline-primary fw-bold w-100">
+                Registrarse como Usuario
+              </a>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <div class="p-3 border rounded-3 h-100 d-flex flex-column justify-content-between bg-light">
+              <div>
+                <i class="bi bi-building fs-2 text-warning d-block mb-2"></i>
+                <h5 class="fw-bold mb-1">Empresa</h5>
+                <p class="small text-muted mb-3">Para organizaciones, colaboradores y patrocinadores.</p>
+              </div>
+              <a href="registro.html?tipo=empresa" class="btn btn-amarillo fw-bold w-100">
+                Registrarse como Empresa
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
