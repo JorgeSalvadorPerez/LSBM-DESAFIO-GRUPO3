@@ -11,17 +11,20 @@ CREATE TABLE Empresa (
     telefono VARCHAR(9),
     email VARCHAR(100) NOT NULL,
     inscripcion VARCHAR(100) NOT NULL,
-
+    contraseña VARCHAR(20) NOT NULL,
+    logo VARCHAR(255) NOT NULL,
 
     CHECK (telefono REGEXP '^[0-9]{9}$'),
-    CHECK (email LIKE '%@%')
+    CHECK (email LIKE '%@%'),
+    CHECK (logo REGEXP '\\.(jpg|jpeg|png)$')
 );
+
 CREATE TABLE Visitante (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
 
-   
+    CHECK (telefono REGEXP '^[0-9]{9}$'),
     CHECK (email LIKE '%@%')
 );
 
