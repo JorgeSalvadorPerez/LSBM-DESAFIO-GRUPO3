@@ -12,7 +12,7 @@
 
   <div class="offcanvas offcanvas-start offcanvas-azul" tabindex="-1" id="menuLateral">
     <div class="offcanvas-header border-bottom border-secondary">
-      <h5 class="offcanvas-title text-amarillo fw-bold">Menú Principal</h5>
+      <h5 class="offcanvas-title text-amarillo fw-bold" id="menu-titulo">Menú Principal</h5>
       <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body">
@@ -33,6 +33,11 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="#mapa" id="opt-mapa" data-bs-dismiss="offcanvas">
+            <i class="bi bi-geo-alt me-2"></i>Mapa
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="#calendario-seccion" id="opt-cal" data-bs-dismiss="offcanvas">
             <i class="bi bi-calendar3 me-2"></i>Calendario
           </a>
@@ -41,11 +46,39 @@
     </div>
   </div>
 
+  <div class="modal fade" id="modalPerfil" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content card-auth overflow-hidden">
+        <div class="card-auth-header d-flex justify-content-between align-items-center">
+          <h5 class="modal-title fw-bold text-amarillo mb-0" id="perfil-modal-titulo">
+            <i class="bi bi-person-bounding-box me-2"></i>Perfil de Usuario
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4 text-center">
+          <div class="mb-3">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80" id="perfil-modal-img" alt="Foto de Perfil" class="rounded-circle border border-warning border-3 shadow" style="width: 110px; height: 110px; object-fit: cover;">
+          </div>
+          <h4 class="fw-bold text-dark mb-1" id="perfil-modal-nombre">Usuario</h4>
+          <div class="mb-4">
+            <span class="badge bg-azul-primario text-amarillo px-3 py-2 fs-6" id="perfil-modal-tipo">Usuario / Invitado</span>
+          </div>
+          <div class="text-start bg-light p-3 rounded-3 border" id="perfil-modal-detalles">
+          </div>
+        </div>
+        <div class="modal-footer bg-light border-0 d-flex justify-content-between">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" id="perfil-btn-cerrar">Cerrar</button>
+          <button type="button" class="btn btn-danger" onclick="cerrarSesion()" id="perfil-btn-salir">Cerrar Sesión</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <header class="banner-superior-sticky py-2 px-3 px-md-4">
     <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap gap-2">
       <div class="d-flex align-items-center gap-2">
         <button class="btn btn-amarillo" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-          <i class="bi bi-list fs-5 me-1"></i>Menú
+          <i class="bi bi-list fs-5 me-1"></i><span id="btn-txt-menu">Menú</span>
         </button>
         <a href="LaSalle.HTML" class="logo-banner">
           <div class="logo-simbolo">LS</div>
@@ -53,10 +86,12 @@
         </a>
       </div>
 
-      <div class="d-flex align-items-center flex-wrap gap-2">
+      <div class="d-flex align-items-center flex-wrap gap-2" id="contenedor-auth-header">
         <button class="btn btn-azul-outline" id="btn-idioma" onclick="cambiarIdioma()">ES / EN</button>
-        <a href="login.html" class="btn btn-azul-outline" id="btn-login-header">Iniciar Sesión</a>
-        <a href="login.html#bloque-registro" class="btn btn-amarillo" id="btn-registro-header">Registrarse</a>
+        <div id="zona-botones-sesion" class="d-flex align-items-center gap-2">
+          <a href="login.html" class="btn btn-azul-outline" id="btn-login-header">Iniciar Sesión</a>
+          <a href="login.html#bloque-registro" class="btn btn-amarillo" id="btn-registro-header">Registrarse</a>
+        </div>
       </div>
     </div>
   </header>
@@ -128,10 +163,10 @@
         <div class="col">
           <div class="card h-100 tarjeta-empresa text-center p-4">
             <div class="logo-empresa-wrapper mx-auto mb-3">
-              <img src="LSBM-DESAFIO-GRUPO3\Archivos Página Web\imagenes\Proximamente.png" class="logo-empresa" alt="Banco Santander">
+              <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=160&q=80" class="logo-empresa" alt="Banco Santander">
             </div>
             <h5 class="fw-bold mb-2">Banco Santander</h5>
-            <p class="text-muted small mb-0">Servicios financieros globales e impulso al talento tecnológico e innovador.</p>
+            <p class="text-muted small mb-0" id="stand-desc-1">Servicios financieros globales e impulso al talento tecnológico e innovador.</p>
           </div>
         </div>
 
@@ -141,7 +176,7 @@
               <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=160&q=80" class="logo-empresa" alt="La Salle Tech">
             </div>
             <h5 class="fw-bold mb-2">La Salle Campus</h5>
-            <p class="text-muted small mb-0">Formación universitaria de vanguardia en ingeniería, computación y proyectos.</p>
+            <p class="text-muted small mb-0" id="stand-desc-2">Formación universitaria de vanguardia en ingeniería, computación y proyectos.</p>
           </div>
         </div>
 
@@ -151,7 +186,7 @@
               <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=160&q=80" class="logo-empresa" alt="NextGen Cloud">
             </div>
             <h5 class="fw-bold mb-2">NextGen Cloud</h5>
-            <p class="text-muted small mb-0">Infraestructura de servidores en la nube y escalabilidad para negocios digitales.</p>
+            <p class="text-muted small mb-0" id="stand-desc-3">Infraestructura de servidores en la nube y escalabilidad para negocios digitales.</p>
           </div>
         </div>
 
@@ -161,7 +196,7 @@
               <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=160&q=80" class="logo-empresa" alt="CyberShield">
             </div>
             <h5 class="fw-bold mb-2">CyberShield Security</h5>
-            <p class="text-muted small mb-0">Seguridad informática avanzada, protección contra ciberataques y auditorías.</p>
+            <p class="text-muted small mb-0" id="stand-desc-4">Seguridad informática avanzada, protección contra ciberataques y auditorías.</p>
           </div>
         </div>
 
@@ -171,7 +206,7 @@
               <img src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=160&q=80" class="logo-empresa" alt="Innova Robotics">
             </div>
             <h5 class="fw-bold mb-2">Innova Robotics</h5>
-            <p class="text-muted small mb-0">Automatización de procesos, robótica aplicada y diseño de dispositivos IoT.</p>
+            <p class="text-muted small mb-0" id="stand-desc-5">Automatización de procesos, robótica aplicada y diseño de dispositivos IoT.</p>
           </div>
         </div>
 
@@ -181,7 +216,7 @@
               <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=160&q=80" class="logo-empresa" alt="DataCore Analytics">
             </div>
             <h5 class="fw-bold mb-2">DataCore Analytics</h5>
-            <p class="text-muted small mb-0">Ciencia de datos y modelos predictivos para análisis de mercado e inversión.</p>
+            <p class="text-muted small mb-0" id="stand-desc-6">Ciencia de datos y modelos predictivos para análisis de mercado e inversión.</p>
           </div>
         </div>
       </div>
@@ -199,7 +234,7 @@
       <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4 border-bottom border-secondary pb-3">
         <div>
           <h2 class="fw-bold text-amarillo mb-1" id="txt-meets-titulo">Salas de Meet</h2>
-          <p class="text-light small mb-0" id="txt-meets-sub">Sesiones virtuales programadas para esta semana.</p>
+          <p class="text-light small mb-0" id="txt-meets-sub">Sesiones virtuales programadas para cada día de la semana.</p>
         </div>
 
         <div class="d-flex align-items-center gap-2">
@@ -207,7 +242,7 @@
             <i class="bi bi-chevron-left"></i>
           </button>
           <span class="badge bg-azul-secundario border border-warning text-white py-2 px-3 fw-bold" id="etiqueta-semana">
-            Semana del 2 al 8 de Noviembre 2026
+            Cargando semana...
           </span>
           <button class="btn btn-azul-outline btn-sm px-3" onclick="moverSemana(1)" title="Semana siguiente">
             <i class="bi bi-chevron-right"></i>
@@ -215,87 +250,108 @@
         </div>
       </div>
 
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-7 g-3 text-center">
+      <div class="row row-cols-1 g-3">
         <div class="col">
-          <div class="tarjeta-dia-meet p-3 h-100 d-flex flex-column justify-content-between">
-            <div>
-              <span class="d-block text-uppercase small fw-bold mb-1" id="dia-1-nom">Lunes</span>
-              <span class="fs-4 fw-bold d-block mb-2" id="dia-1-num">02</span>
+          <div class="tarjeta-dia-columna d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3" id="tarjeta-dia-1">
+            <div class="d-flex align-items-center gap-3">
+              <span class="badge-dia" id="col-dia-1-badge">LUNES 09 NOV</span>
+              <div>
+                <h6 class="fw-bold mb-1" id="col-dia-1-titulo">Jornada de Apertura y Bienvenida</h6>
+                <p class="small text-muted-custom mb-0" id="col-dia-1-desc">Presentación inaugural de los equipos y objetivos del Desafío Santander.</p>
+              </div>
             </div>
-            <div class="small text-muted-custom py-2 border-top border-secondary">
-              Próximamente enlaces
+            <div>
+              <button class="btn btn-sm btn-outline-light disabled" id="col-btn-1">Próximamente enlace</button>
             </div>
           </div>
         </div>
 
         <div class="col">
-          <div class="tarjeta-dia-meet dia-actual p-3 h-100 d-flex flex-column justify-content-between">
-            <div>
-              <span class="d-block text-uppercase small fw-bold mb-1" id="dia-2-nom">Martes (Hoy)</span>
-              <span class="fs-4 fw-bold d-block mb-2" id="dia-2-num">03</span>
+          <div class="tarjeta-dia-columna dia-actual d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3" id="tarjeta-dia-2">
+            <div class="d-flex align-items-center gap-3">
+              <span class="badge-dia" id="col-dia-2-badge">MARTES 10 NOV (HOY)</span>
+              <div>
+                <h6 class="fw-bold mb-1" id="col-dia-2-titulo">Sesión Técnica de Prototipos</h6>
+                <p class="small text-muted-custom mb-0" id="col-dia-2-desc">Evaluación intermedia de modelos de desarrollo de software y tecnología.</p>
+              </div>
             </div>
-            <div class="small text-muted-custom py-2 border-top border-dark">
-              Próximamente enlaces
+            <div>
+              <button class="btn btn-sm btn-dark fw-bold disabled" id="col-btn-2">Próximamente enlace</button>
             </div>
           </div>
         </div>
 
         <div class="col">
-          <div class="tarjeta-dia-meet p-3 h-100 d-flex flex-column justify-content-between">
-            <div>
-              <span class="d-block text-uppercase small fw-bold mb-1" id="dia-3-nom">Miércoles</span>
-              <span class="fs-4 fw-bold d-block mb-2" id="dia-3-num">04</span>
+          <div class="tarjeta-dia-columna d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3" id="tarjeta-dia-3">
+            <div class="d-flex align-items-center gap-3">
+              <span class="badge-dia" id="col-dia-3-badge">MIÉRCOLES 11 NOV</span>
+              <div>
+                <h6 class="fw-bold mb-1" id="col-dia-3-titulo">Mesa Redonda: Fintech e Innovación</h6>
+                <p class="small text-muted-custom mb-0" id="col-dia-3-desc">Debate con profesionales del sector bancario y empresarial contemporáneo.</p>
+              </div>
             </div>
-            <div class="small text-muted-custom py-2 border-top border-secondary">
-              Próximamente enlaces
+            <div>
+              <button class="btn btn-sm btn-outline-light disabled" id="col-btn-3">Próximamente enlace</button>
             </div>
           </div>
         </div>
 
         <div class="col">
-          <div class="tarjeta-dia-meet p-3 h-100 d-flex flex-column justify-content-between">
-            <div>
-              <span class="d-block text-uppercase small fw-bold mb-1" id="dia-4-nom">Jueves</span>
-              <span class="fs-4 fw-bold d-block mb-2" id="dia-4-num">05</span>
+          <div class="tarjeta-dia-columna d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3" id="tarjeta-dia-4">
+            <div class="d-flex align-items-center gap-3">
+              <span class="badge-dia" id="col-dia-4-badge">JUEVES 12 NOV</span>
+              <div>
+                <h6 class="fw-bold mb-1" id="col-dia-4-titulo">Taller de Ciberseguridad y Datos</h6>
+                <p class="small text-muted-custom mb-0" id="col-dia-4-desc">Buenas prácticas de seguridad informática en transacciones bancarias.</p>
+              </div>
             </div>
-            <div class="small text-muted-custom py-2 border-top border-secondary">
-              Próximamente enlaces
+            <div>
+              <button class="btn btn-sm btn-outline-light disabled" id="col-btn-4">Próximamente enlace</button>
             </div>
           </div>
         </div>
 
         <div class="col">
-          <div class="tarjeta-dia-meet p-3 h-100 d-flex flex-column justify-content-between">
-            <div>
-              <span class="d-block text-uppercase small fw-bold mb-1" id="dia-5-nom">Viernes</span>
-              <span class="fs-4 fw-bold d-block mb-2" id="dia-5-num">06</span>
+          <div class="tarjeta-dia-columna d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3" id="tarjeta-dia-5">
+            <div class="d-flex align-items-center gap-3">
+              <span class="badge-dia" id="col-dia-5-badge">VIERNES 13 NOV</span>
+              <div>
+                <h6 class="fw-bold mb-1" id="col-dia-5-titulo">Demostraciones en Vivo de Stands</h6>
+                <p class="small text-muted-custom mb-0" id="col-dia-5-desc">Sesiones interactivas con las empresas colaboradoras de la feria.</p>
+              </div>
             </div>
-            <div class="small text-muted-custom py-2 border-top border-secondary">
-              Próximamente enlaces
+            <div>
+              <button class="btn btn-sm btn-outline-light disabled" id="col-btn-5">Próximamente enlace</button>
             </div>
           </div>
         </div>
 
         <div class="col">
-          <div class="tarjeta-dia-meet p-3 h-100 d-flex flex-column justify-content-between">
-            <div>
-              <span class="d-block text-uppercase small fw-bold mb-1" id="dia-6-nom">Sábado</span>
-              <span class="fs-4 fw-bold d-block mb-2" id="dia-6-num">07</span>
+          <div class="tarjeta-dia-columna d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3" id="tarjeta-dia-6">
+            <div class="d-flex align-items-center gap-3">
+              <span class="badge-dia" id="col-dia-6-badge">SÁBADO 14 NOV</span>
+              <div>
+                <h6 class="fw-bold mb-1" id="col-dia-6-titulo">Ronda de Mentorías y Consultoría</h6>
+                <p class="small text-muted-custom mb-0" id="col-dia-6-desc">Asesoramiento individualizado a cargo de expertos de La Salle.</p>
+              </div>
             </div>
-            <div class="small text-muted-custom py-2 border-top border-secondary">
-              Próximamente enlaces
+            <div>
+              <button class="btn btn-sm btn-outline-light disabled" id="col-btn-6">Próximamente enlace</button>
             </div>
           </div>
         </div>
 
         <div class="col">
-          <div class="tarjeta-dia-meet p-3 h-100 d-flex flex-column justify-content-between">
-            <div>
-              <span class="d-block text-uppercase small fw-bold mb-1" id="dia-7-nom">Domingo</span>
-              <span class="fs-4 fw-bold d-block mb-2" id="dia-7-num">08</span>
+          <div class="tarjeta-dia-columna d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3" id="tarjeta-dia-7">
+            <div class="d-flex align-items-center gap-3">
+              <span class="badge-dia" id="col-dia-7-badge">DOMINGO 15 NOV</span>
+              <div>
+                <h6 class="fw-bold mb-1" id="col-dia-7-titulo">Cierre y Balance Semanal</h6>
+                <p class="small text-muted-custom mb-0" id="col-dia-7-desc">Resumen general de actividades y preparación de los proyectos finalistas.</p>
+              </div>
             </div>
-            <div class="small text-muted-custom py-2 border-top border-secondary">
-              Próximamente enlaces
+            <div>
+              <button class="btn btn-sm btn-outline-light disabled" id="col-btn-7">Próximamente enlace</button>
             </div>
           </div>
         </div>
@@ -303,19 +359,95 @@
     </div>
   </section>
 
+  <section class="seccion-mapa py-5" id="mapa">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2 class="fw-bold display-6" style="color: #0f2547;" id="txt-mapa-titulo">Ubicación del Evento</h2>
+        <p class="text-muted" id="txt-mapa-sub">Encuéntranos en el Colegio La Salle Santo Ángel de Zaragoza.</p>
+        <span class="badge bg-azul-primario text-amarillo fs-6 py-2 px-3 fw-bold">
+          <i class="bi bi-geo-alt-fill me-1"></i>Calle Tomás Pelayo, 18, 50012 Zaragoza
+        </span>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10">
+          <iframe 
+            class="mapa-frame mb-3"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2982.025345672152!2d-0.8936785234586455!3d41.633596480749065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5914ddf2fa75bb%3A0x6b2e11894d3a8a3a!2sColegio%20La%20Salle%20Santo%20%C3%81ngel!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+          <div class="text-center">
+            <a href="https://www.google.com/maps/search/?api=1&query=Colegio+La+Salle+Santo+Angel+Zaragoza" target="_blank" rel="noopener noreferrer" class="btn btn-amarillo px-4 py-2" id="btn-abrir-gmaps">
+              <i class="bi bi-box-arrow-up-right me-2"></i>Abrir en Google Maps
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="seccion-footer py-5 border-top border-warning border-3">
+    <div class="container">
+      <div class="row g-4 mb-4">
+        <div class="col-12 col-md-4">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <div class="logo-simbolo">LS</div>
+            <span class="fs-4 fw-bold text-amarillo">LA SALLE TECH</span>
+          </div>
+          <p class="small text-muted-custom mb-3" id="footer-desc">
+            Punto de encuentro para la innovación, tecnología y soluciones digitales dentro del marco del Desafío Santander y La Salle.
+          </p>
+          <span class="badge bg-azul-secundario text-amarillo border border-warning" id="footer-badge">Desafío Santander - Grupo 3</span>
+        </div>
+
+        <div class="col-6 col-md-4">
+          <h6 class="fw-bold text-amarillo text-uppercase mb-3" id="footer-col-enlaces">Información Legal</h6>
+          <ul class="list-unstyled d-flex flex-column gap-2 small">
+            <li><a href="#" class="footer-link" onclick="event.preventDefault()" id="link-sobre-nosotros">Sobre nosotros</a></li>
+            <li><a href="#" class="footer-link" onclick="event.preventDefault()" id="link-politica-privacidad">Política de privacidad</a></li>
+            <li><a href="#" class="footer-link" onclick="event.preventDefault()" id="link-aviso-legal">Aviso legal</a></li>
+            <li><a href="#" class="footer-link" onclick="event.preventDefault()" id="link-terminos">Términos y condiciones</a></li>
+            <li><a href="#" class="footer-link" onclick="event.preventDefault()" id="link-cookies">Política de cookies</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-4">
+          <h6 class="fw-bold text-amarillo text-uppercase mb-3" id="footer-col-contacto">Sede y Contacto</h6>
+          <ul class="list-unstyled small text-muted-custom d-flex flex-column gap-2">
+            <li><i class="bi bi-geo-alt text-amarillo me-2"></i>Colegio La Salle Santo Ángel</li>
+            <li><i class="bi bi-pin-map text-amarillo me-2"></i>Calle Tomás Pelayo, 18, 50012 Zaragoza</li>
+            <li><i class="bi bi-envelope text-amarillo me-2"></i>info@ferialasalle.es</li>
+            <li><i class="bi bi-telephone text-amarillo me-2"></i>+34 976 00 00 00</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-top border-secondary pt-3 text-center small text-muted-custom" id="footer-copy">
+        &copy; 2026 - 2027 Feria Tecnológica La Salle &bull; Desafío Santander. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    let idiomaActual = "es";
+    let idiomaActual = localStorage.getItem("idiomaSeleccionado") || "es";
+    let offsetSemana = 0;
 
-    function cambiarIdioma() {
-      if (idiomaActual === "es") {
-        idiomaActual = "en";
+    function aplicarTraduccion(lang) {
+      if (lang === "en") {
+        document.getElementById("menu-titulo").innerText = "Main Menu";
         document.getElementById("opt-info").innerHTML = '<i class="bi bi-info-circle me-2"></i>Information';
         document.getElementById("opt-stands").innerHTML = '<i class="bi bi-shop me-2"></i>Stands';
         document.getElementById("opt-meet").innerHTML = '<i class="bi bi-camera-video me-2"></i>Meets';
+        document.getElementById("opt-mapa").innerHTML = '<i class="bi bi-geo-alt me-2"></i>Map';
         document.getElementById("opt-cal").innerHTML = '<i class="bi bi-calendar3 me-2"></i>Calendar';
-        document.getElementById("btn-login-header").innerText = "Sign In";
-        document.getElementById("btn-registro-header").innerText = "Register";
+        document.getElementById("btn-txt-menu").innerText = "Menu";
+        const btnLogin = document.getElementById("btn-login-header");
+        if (btnLogin) btnLogin.innerText = "Sign In";
+        const btnReg = document.getElementById("btn-registro-header");
+        if (btnReg) btnReg.innerText = "Register";
         document.getElementById("txt-titulo").innerText = "LA SALLE TECH FAIR";
         document.getElementById("txt-subtitulo").innerText = "Santander Challenge - Group 3";
         document.getElementById("txt-contador-desc").innerText = "Event starts: January 4th at 18:00h";
@@ -332,22 +464,34 @@
         document.getElementById("txt-stands-sub").innerText = "Discover participating companies and organizations in this edition.";
         document.getElementById("btn-ver-mas-stands").innerText = "See more companies";
         document.getElementById("txt-meets-titulo").innerText = "Meet Rooms";
-        document.getElementById("txt-meets-sub").innerText = "Virtual sessions scheduled for this week.";
-        document.getElementById("dia-1-nom").innerText = "Monday";
-        document.getElementById("dia-2-nom").innerText = "Tuesday (Today)";
-        document.getElementById("dia-3-nom").innerText = "Wednesday";
-        document.getElementById("dia-4-nom").innerText = "Thursday";
-        document.getElementById("dia-5-nom").innerText = "Friday";
-        document.getElementById("dia-6-nom").innerText = "Saturday";
-        document.getElementById("dia-7-nom").innerText = "Sunday";
+        document.getElementById("txt-meets-sub").innerText = "Virtual sessions scheduled for each day of the week.";
+        document.getElementById("txt-mapa-titulo").innerText = "Event Location";
+        document.getElementById("txt-mapa-sub").innerText = "Find us at Colegio La Salle Santo Ángel in Zaragoza.";
+        document.getElementById("btn-abrir-gmaps").innerHTML = '<i class="bi bi-box-arrow-up-right me-2"></i>Open in Google Maps';
+        document.getElementById("footer-desc").innerText = "Meeting point for innovation, technology and digital solutions within the Santander & La Salle Challenge.";
+        document.getElementById("footer-col-enlaces").innerText = "Legal Information";
+        document.getElementById("footer-col-contacto").innerText = "Headquarters & Contact";
+        document.getElementById("link-sobre-nosotros").innerText = "About us";
+        document.getElementById("link-politica-privacidad").innerText = "Privacy Policy";
+        document.getElementById("link-aviso-legal").innerText = "Legal Notice";
+        document.getElementById("link-terminos").innerText = "Terms and Conditions";
+        document.getElementById("link-cookies").innerText = "Cookies Policy";
+        document.getElementById("footer-copy").innerHTML = "&copy; 2026 - 2027 La Salle Tech Fair &bull; Santander Challenge. All rights reserved.";
+        document.getElementById("perfil-modal-titulo").innerHTML = '<i class="bi bi-person-bounding-box me-2"></i>Account Profile';
+        document.getElementById("perfil-btn-cerrar").innerText = "Close";
+        document.getElementById("perfil-btn-salir").innerText = "Log Out";
       } else {
-        idiomaActual = "es";
+        document.getElementById("menu-titulo").innerText = "Menú Principal";
         document.getElementById("opt-info").innerHTML = '<i class="bi bi-info-circle me-2"></i>Información';
         document.getElementById("opt-stands").innerHTML = '<i class="bi bi-shop me-2"></i>Stands';
         document.getElementById("opt-meet").innerHTML = '<i class="bi bi-camera-video me-2"></i>Meets';
+        document.getElementById("opt-mapa").innerHTML = '<i class="bi bi-geo-alt me-2"></i>Mapa';
         document.getElementById("opt-cal").innerHTML = '<i class="bi bi-calendar3 me-2"></i>Calendario';
-        document.getElementById("btn-login-header").innerText = "Iniciar Sesión";
-        document.getElementById("btn-registro-header").innerText = "Registrarse";
+        document.getElementById("btn-txt-menu").innerText = "Menú";
+        const btnLogin = document.getElementById("btn-login-header");
+        if (btnLogin) btnLogin.innerText = "Iniciar Sesión";
+        const btnReg = document.getElementById("btn-registro-header");
+        if (btnReg) btnReg.innerText = "Registrarse";
         document.getElementById("txt-titulo").innerText = "FERIA TECNOLÓGICA LA SALLE";
         document.getElementById("txt-subtitulo").innerText = "Desafío Santander - Grupo 3";
         document.getElementById("txt-contador-desc").innerText = "Inicio del evento: 4 de Enero a las 18:00h";
@@ -364,16 +508,102 @@
         document.getElementById("txt-stands-sub").innerText = "Conoce a las empresas y organizaciones participantes en esta edición.";
         document.getElementById("btn-ver-mas-stands").innerText = "Ver más empresas";
         document.getElementById("txt-meets-titulo").innerText = "Salas de Meet";
-        document.getElementById("txt-meets-sub").innerText = "Sesiones virtuales programadas para esta semana.";
-        document.getElementById("dia-1-nom").innerText = "Lunes";
-        document.getElementById("dia-2-nom").innerText = "Martes (Hoy)";
-        document.getElementById("dia-3-nom").innerText = "Miércoles";
-        document.getElementById("dia-4-nom").innerText = "Jueves";
-        document.getElementById("dia-5-nom").innerText = "Viernes";
-        document.getElementById("dia-6-nom").innerText = "Sábado";
-        document.getElementById("dia-7-nom").innerText = "Domingo";
+        document.getElementById("txt-meets-sub").innerText = "Sesiones virtuales programadas para cada día de la semana.";
+        document.getElementById("txt-mapa-titulo").innerText = "Ubicación del Evento";
+        document.getElementById("txt-mapa-sub").innerText = "Encuéntranos en el Colegio La Salle Santo Ángel de Zaragoza.";
+        document.getElementById("btn-abrir-gmaps").innerHTML = '<i class="bi bi-box-arrow-up-right me-2"></i>Abrir en Google Maps';
+        document.getElementById("footer-desc").innerText = "Punto de encuentro para la innovación, tecnología y soluciones digitales dentro del marco del Desafío Santander y La Salle.";
+        document.getElementById("footer-col-enlaces").innerText = "Información Legal";
+        document.getElementById("footer-col-contacto").innerText = "Sede y Contacto";
+        document.getElementById("link-sobre-nosotros").innerText = "Sobre nosotros";
+        document.getElementById("link-politica-privacidad").innerText = "Política de privacidad";
+        document.getElementById("link-aviso-legal").innerText = "Aviso legal";
+        document.getElementById("link-terminos").innerText = "Términos y condiciones";
+        document.getElementById("link-cookies").innerText = "Política de cookies";
+        document.getElementById("footer-copy").innerHTML = "&copy; 2026 - 2027 Feria Tecnológica La Salle &bull; Desafío Santander. Todos los derechos reservados.";
+        document.getElementById("perfil-modal-titulo").innerHTML = '<i class="bi bi-person-bounding-box me-2"></i>Perfil de Usuario';
+        document.getElementById("perfil-btn-cerrar").innerText = "Cerrar";
+        document.getElementById("perfil-btn-salir").innerText = "Cerrar Sesión";
+      }
+      renderizarMeets();
+    }
+
+    function cambiarIdioma() {
+      idiomaActual = (idiomaActual === "es") ? "en" : "es";
+      localStorage.setItem("idiomaSeleccionado", idiomaActual);
+      aplicarTraduccion(idiomaActual);
+      actualizarEstadoSesion();
+    }
+
+    function abrirPerfil() {
+      const usuarioSesion = localStorage.getItem("usuarioActual");
+      if (!usuarioSesion) return;
+      const datos = JSON.parse(usuarioSesion);
+
+      const imgEl = document.getElementById("perfil-modal-img");
+      const nomEl = document.getElementById("perfil-modal-nombre");
+      const tipoEl = document.getElementById("perfil-modal-tipo");
+      const detEl = document.getElementById("perfil-modal-detalles");
+
+      const defaultFoto = (datos.tipo === "empresa") ?
+        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=200&q=80" :
+        "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80";
+
+      imgEl.src = datos.foto || defaultFoto;
+      nomEl.innerText = datos.nombre;
+
+      if (datos.tipo === "empresa") {
+        tipoEl.innerText = (idiomaActual === "es") ? "Empresa Colaboradora" : "Partner Company";
+        detEl.innerHTML = `
+          <div class="mb-2"><strong class="text-secondary">${idiomaActual === "es" ? "Centro:" : "Center:"}</strong> <span class="text-dark">${datos.centro || "-"}</span></div>
+          <div class="mb-2"><strong class="text-secondary">${idiomaActual === "es" ? "Localidad:" : "City:"}</strong> <span class="text-dark">${datos.localidad || "-"}</span></div>
+          <div class="mb-2"><strong class="text-secondary">${idiomaActual === "es" ? "Teléfono:" : "Phone:"}</strong> <span class="text-dark">${datos.telefono || "-"}</span></div>
+          <div class="mb-2"><strong class="text-secondary">${idiomaActual === "es" ? "Correo Corporativo:" : "Corporate Email:"}</strong> <span class="text-dark">${datos.correo || "-"}</span></div>
+          <div><strong class="text-secondary">${idiomaActual === "es" ? "Descripción:" : "Description:"}</strong> <p class="small text-muted mb-0 mt-1">${datos.descripcion || "-"}</p></div>
+        `;
+      } else {
+        tipoEl.innerText = (idiomaActual === "es") ? "Usuario / Asistente" : "User / Attendee";
+        detEl.innerHTML = `
+          <div class="mb-2"><strong class="text-secondary">${idiomaActual === "es" ? "Nombre Completo:" : "Full Name:"}</strong> <span class="text-dark">${datos.nombre}</span></div>
+          <div class="mb-2"><strong class="text-secondary">${idiomaActual === "es" ? "Correo Electrónico:" : "Email Address:"}</strong> <span class="text-dark">${datos.correo || "-"}</span></div>
+          <div><strong class="text-secondary">${idiomaActual === "es" ? "Tipo de Perfil:" : "Profile Type:"}</strong> <span class="text-dark">${idiomaActual === "es" ? "Visitante Acreditado" : "Accredited Visitor"}</span></div>
+        `;
+      }
+
+      const modal = new bootstrap.Modal(document.getElementById("modalPerfil"));
+      modal.show();
+    }
+
+    function actualizarEstadoSesion() {
+      const usuarioSesion = localStorage.getItem("usuarioActual");
+      const zonaBotones = document.getElementById("zona-botones-sesion");
+      if (usuarioSesion && zonaBotones) {
+        const datos = JSON.parse(usuarioSesion);
+        const defaultFoto = (datos.tipo === "empresa") ?
+          "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=200&q=80" :
+          "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80";
+        const userFoto = datos.foto || defaultFoto;
+
+        zonaBotones.innerHTML = `
+          <button class="btn p-0 border-0 d-flex align-items-center gap-2 text-decoration-none shadow-none" onclick="abrirPerfil()" title="${idiomaActual === "es" ? "Ver mi perfil" : "View my profile"}">
+            <img src="${userFoto}" alt="Avatar" class="rounded-circle border border-warning border-2" style="width: 36px; height: 36px; object-fit: cover;">
+            <span class="badge bg-amarillo text-dark fs-6 py-2 px-3 fw-bold d-none d-sm-inline">
+              ${datos.nombre}
+            </span>
+          </button>
+          <button class="btn btn-outline-danger btn-sm fw-bold ms-1" onclick="cerrarSesion()">
+            ${idiomaActual === "es" ? "Salir" : "Logout"}
+          </button>
+        `;
       }
     }
+
+    function cerrarSesion() {
+      localStorage.removeItem("usuarioActual");
+      window.location.reload();
+    }
+
+    actualizarEstadoSesion();
 
     function calcularContador() {
       const ahora = new Date();
@@ -408,18 +638,85 @@
     calcularContador();
     setInterval(calcularContador, 1000);
 
-    let offsetSemana = 0;
-    function moverSemana(dir) {
-      offsetSemana += dir;
+    function getLunesDeSemana(offset) {
+      const ahora = new Date();
+      const diaSem = ahora.getDay();
+      const diff = diaSem === 0 ? -6 : 1 - diaSem;
+      return new Date(ahora.getFullYear(), ahora.getMonth(), ahora.getDate() + diff + (offset * 7));
+    }
+
+    function renderizarMeets() {
+      const lunes = getLunesDeSemana(offsetSemana);
+      const domingo = new Date(lunes.getFullYear(), lunes.getMonth(), lunes.getDate() + 6);
+      const ahora = new Date();
+
+      const mesesES = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+      const mesesEN = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      const mesesCortoES = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
+      const mesesCortoEN = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+      const diasES = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
+      const diasEN = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
       const etiqueta = document.getElementById("etiqueta-semana");
-      if (offsetSemana === 0) {
-        etiqueta.innerText = "Semana del 2 al 8 de Noviembre 2026";
-      } else if (offsetSemana > 0) {
-        etiqueta.innerText = "Semana del " + (2 + offsetSemana * 7) + " de Noviembre 2026";
-      } else {
-        etiqueta.innerText = "Semana anterior";
+      if (etiqueta) {
+        if (idiomaActual === "es") {
+          if (lunes.getMonth() === domingo.getMonth()) {
+            etiqueta.innerText = "Semana del " + lunes.getDate() + " al " + domingo.getDate() + " de " + mesesES[lunes.getMonth()] + " " + lunes.getFullYear();
+          } else {
+            etiqueta.innerText = "Semana del " + lunes.getDate() + " de " + mesesES[lunes.getMonth()] + " al " + domingo.getDate() + " de " + mesesES[domingo.getMonth()] + " " + domingo.getFullYear();
+          }
+        } else {
+          if (lunes.getMonth() === domingo.getMonth()) {
+            etiqueta.innerText = "Week of " + mesesEN[lunes.getMonth()] + " " + lunes.getDate() + " - " + domingo.getDate() + ", " + lunes.getFullYear();
+          } else {
+            etiqueta.innerText = "Week of " + mesesEN[lunes.getMonth()] + " " + lunes.getDate() + " - " + mesesEN[domingo.getMonth()] + " " + domingo.getDate() + ", " + domingo.getFullYear();
+          }
+        }
+      }
+
+      for (let i = 0; i < 7; i++) {
+        const fechaDia = new Date(lunes.getFullYear(), lunes.getMonth(), lunes.getDate() + i);
+        const numDia = String(fechaDia.getDate()).padStart(2, "0");
+        const mesStr = (idiomaActual === "es") ? mesesCortoES[fechaDia.getMonth()] : mesesCortoEN[fechaDia.getMonth()];
+        const nomDia = (idiomaActual === "es") ? diasES[i].toUpperCase() : diasEN[i].toUpperCase();
+        const esHoy = (fechaDia.toDateString() === ahora.toDateString());
+
+        const badgeEl = document.getElementById("col-dia-" + (i + 1) + "-badge");
+        const tarjetaEl = document.getElementById("tarjeta-dia-" + (i + 1));
+        const btnEl = document.getElementById("col-btn-" + (i + 1));
+
+        if (badgeEl) {
+          let textoBadge = nomDia + " " + numDia + " " + mesStr;
+          if (esHoy) {
+            textoBadge += (idiomaActual === "es") ? " (HOY)" : " (TODAY)";
+          }
+          badgeEl.innerText = textoBadge;
+        }
+
+        if (tarjetaEl) {
+          if (esHoy) {
+            tarjetaEl.classList.add("dia-actual");
+            if (btnEl) {
+              btnEl.className = "btn btn-sm btn-dark fw-bold disabled";
+              btnEl.innerText = (idiomaActual === "es") ? "Próximamente enlace" : "Link coming soon";
+            }
+          } else {
+            tarjetaEl.classList.remove("dia-actual");
+            if (btnEl) {
+              btnEl.className = "btn btn-sm btn-outline-light disabled";
+              btnEl.innerText = (idiomaActual === "es") ? "Próximamente enlace" : "Link coming soon";
+            }
+          }
+        }
       }
     }
+
+    function moverSemana(dir) {
+      offsetSemana += dir;
+      renderizarMeets();
+    }
+
+    aplicarTraduccion(idiomaActual);
   </script>
 </body>
 </html>

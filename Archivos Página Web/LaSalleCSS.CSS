@@ -242,33 +242,78 @@ body {
   border-bottom: 4px solid #facc15;
 }
 
-.tarjeta-dia-meet {
-  border-radius: 12px;
+.tarjeta-dia-columna {
+  border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.15);
-  background-color: rgba(26, 68, 128, 0.5);
+  background-color: rgba(26, 68, 128, 0.4);
   color: #ffffff;
+  padding: 16px 22px;
   transition: all 0.25s ease;
 }
 
-.tarjeta-dia-meet:hover {
-  transform: translateY(-3px);
+.tarjeta-dia-columna:hover {
   border-color: #facc15;
+  background-color: rgba(26, 68, 128, 0.65);
+  transform: translateX(4px);
 }
 
-.tarjeta-dia-meet.dia-actual {
+.tarjeta-dia-columna.dia-actual {
   background-color: #facc15 !important;
   color: #0f2547 !important;
   border: 2px solid #ffffff;
   font-weight: 700;
-  box-shadow: 0 4px 16px rgba(250, 204, 21, 0.4);
+  box-shadow: 0 4px 18px rgba(250, 204, 21, 0.4);
 }
 
-.tarjeta-dia-meet.dia-actual .text-muted-custom {
-  color: #1e293b !important;
+.tarjeta-dia-columna.dia-actual .text-muted-custom {
+  color: #334155 !important;
+}
+
+.tarjeta-dia-columna.dia-actual .badge-dia {
+  background-color: #0f2547 !important;
+  color: #facc15 !important;
+}
+
+.badge-dia {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-size: 0.85rem;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 700;
 }
 
 .text-muted-custom {
   color: #cbd5e1;
+}
+
+.seccion-mapa {
+  background-color: #ffffff;
+  border-bottom: 4px solid #0f2547;
+}
+
+.mapa-frame {
+  width: 100%;
+  height: 420px;
+  border-radius: 14px;
+  border: 3px solid #facc15;
+  box-shadow: 0 8px 24px rgba(15, 37, 71, 0.12);
+}
+
+.seccion-footer {
+  background-color: #0a192f;
+  color: #f8fafc;
+}
+
+.footer-link {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-link:hover {
+  color: #facc15;
+  text-decoration: underline;
 }
 
 .card-auth {
