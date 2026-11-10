@@ -17,7 +17,7 @@
       </a>
       <div class="d-flex align-items-center gap-2">
         <button class="btn btn-sm btn-azul-outline" id="btn-idioma" onclick="cambiarIdioma()">ES / EN</button>
-        <a href="LaSalle.HTML" class="btn btn-sm btn-amarillo" id="link-inicio">Página Principal</a>
+        <a href="index.html" class="btn btn-sm btn-amarillo" id="link-inicio">Página Principal</a>
       </div>
     </div>
   </nav>
@@ -249,7 +249,7 @@
         localStorage.setItem("usuariosRegistrados", JSON.stringify(usuarios));
         localStorage.setItem("usuarioActual", JSON.stringify(nuevoUsuario));
         alert(idiomaActual === "es" ? "¡Registro completado con éxito! Bienvenido/a " + nombre : "Registration successful! Welcome " + nombre);
-        window.location.href = "LaSalle.HTML";
+        window.location.href = "index.html";
       }
 
       if (fotoInput && fotoInput.files && fotoInput.files[0]) {
@@ -297,7 +297,7 @@
         localStorage.setItem("usuariosRegistrados", JSON.stringify(usuarios));
         localStorage.setItem("usuarioActual", JSON.stringify(nuevaEmpresa));
         alert(idiomaActual === "es" ? "¡Empresa registrada con éxito! Bienvenido/a " + nombre : "Company registered successfully! Welcome " + nombre);
-        window.location.href = "LaSalle.HTML";
+        window.location.href = "index.html";
       }
 
       if (logoInput && logoInput.files && logoInput.files[0]) {

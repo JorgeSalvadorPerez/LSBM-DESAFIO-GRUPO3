@@ -1,3 +1,11 @@
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 85px;
+}
+
 body {
   font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
   background-color: #f4f6fa;
@@ -58,6 +66,22 @@ body {
   border-bottom: 3px solid #facc15;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
   transition: all 0.3s ease;
+}
+
+.nav-link-header {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-link-header:hover {
+  background-color: #facc15;
+  color: #0f2547;
 }
 
 .logo-banner {

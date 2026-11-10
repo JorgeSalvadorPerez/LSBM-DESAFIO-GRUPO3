@@ -10,7 +10,7 @@
 </head>
 <body>
 
-  <div class="offcanvas offcanvas-start offcanvas-azul" tabindex="-1" id="menuLateral">
+  <div class="offcanvas offcanvas-start offcanvas-azul d-lg-none" tabindex="-1" id="menuLateral">
     <div class="offcanvas-header border-bottom border-secondary">
       <h5 class="offcanvas-title text-amarillo fw-bold" id="menu-titulo">Menú Principal</h5>
       <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
@@ -76,15 +76,23 @@
 
   <header class="banner-superior-sticky py-2 px-3 px-md-4">
     <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap gap-2">
-      <div class="d-flex align-items-center gap-2">
-        <button class="btn btn-amarillo" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
+      <div class="d-flex align-items-center gap-3">
+        <button class="btn btn-amarillo d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
           <i class="bi bi-list fs-5 me-1"></i><span id="btn-txt-menu">Menú</span>
         </button>
-        <a href="LaSalle.HTML" class="logo-banner">
+        <a href="index.html" class="logo-banner">
           <div class="logo-simbolo">LS</div>
           <span class="logo-texto">LA SALLE</span>
         </a>
       </div>
+
+      <nav class="d-none d-lg-flex align-items-center gap-1 mx-auto" id="nav-escritorio">
+        <a href="#info" class="nav-link-header" id="header-nav-info">Información</a>
+        <a href="#stands" class="nav-link-header" id="header-nav-stands">Stands</a>
+        <a href="#meets" class="nav-link-header" id="header-nav-meets">Meets</a>
+        <a href="#mapa" class="nav-link-header" id="header-nav-mapa">Mapa</a>
+        <a href="#calendario-seccion" class="nav-link-header" id="header-nav-cal">Calendario</a>
+      </nav>
 
       <div class="d-flex align-items-center flex-wrap gap-2" id="contenedor-auth-header">
         <button class="btn btn-azul-outline" id="btn-idioma" onclick="cambiarIdioma()">ES / EN</button>
@@ -443,6 +451,11 @@
         document.getElementById("opt-meet").innerHTML = '<i class="bi bi-camera-video me-2"></i>Meets';
         document.getElementById("opt-mapa").innerHTML = '<i class="bi bi-geo-alt me-2"></i>Map';
         document.getElementById("opt-cal").innerHTML = '<i class="bi bi-calendar3 me-2"></i>Calendar';
+        document.getElementById("header-nav-info").innerText = "Information";
+        document.getElementById("header-nav-stands").innerText = "Stands";
+        document.getElementById("header-nav-meets").innerText = "Meets";
+        document.getElementById("header-nav-mapa").innerText = "Map";
+        document.getElementById("header-nav-cal").innerText = "Calendar";
         document.getElementById("btn-txt-menu").innerText = "Menu";
         const btnLogin = document.getElementById("btn-login-header");
         if (btnLogin) btnLogin.innerText = "Sign In";
@@ -487,6 +500,11 @@
         document.getElementById("opt-meet").innerHTML = '<i class="bi bi-camera-video me-2"></i>Meets';
         document.getElementById("opt-mapa").innerHTML = '<i class="bi bi-geo-alt me-2"></i>Mapa';
         document.getElementById("opt-cal").innerHTML = '<i class="bi bi-calendar3 me-2"></i>Calendario';
+        document.getElementById("header-nav-info").innerText = "Información";
+        document.getElementById("header-nav-stands").innerText = "Stands";
+        document.getElementById("header-nav-meets").innerText = "Meets";
+        document.getElementById("header-nav-mapa").innerText = "Mapa";
+        document.getElementById("header-nav-cal").innerText = "Calendario";
         document.getElementById("btn-txt-menu").innerText = "Menú";
         const btnLogin = document.getElementById("btn-login-header");
         if (btnLogin) btnLogin.innerText = "Iniciar Sesión";
